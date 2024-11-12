@@ -6,56 +6,8 @@ from sklearn.cluster import KMeans
 import numpy as np
 from sklearn.metrics import silhouette_score
 
-'''
-def numClusters(data, max_k):
-    
-    #means = sum of square error
-    means = []
-    inertia = []
-    
-    for k in range(1, max_k + 1):
-        kmeans = KMeans(n_clusters = k)
-        kmeans.fit(data)
-
-        means.append(k)
-        inertia.append(kmeans.inertia_)
-
-    #Generate elbow plot
-    fig = plt.subplots(figsize=(10, 5))
-    plt.plot(means, inertia)
-    plt.xlabel('Number of Clusters')
-    plt.ylabel('Inertia')
-    plt.grid(True)
-    plt.show()
-    
-    elbow_clusters = np.argmax(np.diff(means)) + 2
-
-    silhouette_scores = []
-    for k in range(2, max_k + 1):  # Silhouette requires at least 2 clusters
-        kmeans = KMeans(n_clusters=k, random_state=42)
-        labels = kmeans.fit_predict(data)
-        silhouette_scores.append(silhouette_score(data, labels))
-    
-    # Plotting Silhouette Scores
-    plt.figure(figsize=(8, 4))
-    plt.plot(range(2, max_k + 1), silhouette_scores, marker='o')
-    plt.xlabel("Number of clusters (k)")
-    plt.ylabel("Silhouette Score")
-    plt.title("Silhouette Analysis for Optimal k")
-    plt.show()
-
-    # Finding the optimal k for Silhouette Method
-    silhouette_clusters = np.argmax(silhouette_scores) + 2
-
-    print('SC:', silhouette_clusters)
-    print('EC:', elbow_clusters)
-
-    '''
-
 df = pd.read_csv("austin_weather2.csv")
 df['DayOfYear'] = pd.to_datetime(df['Date']).dt.dayofyear
-
-#numClusters(df[['DayOfYear', 'TempAvgF']], 10)
 
 km = KMeans(n_clusters=4, random_state=10)
 print(km)

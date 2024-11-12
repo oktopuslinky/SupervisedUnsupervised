@@ -7,7 +7,6 @@ from sklearn.metrics import mean_squared_error
 
 df = pd.read_csv("austin_weather2.csv")
 df['Date'] = pd.to_datetime(df['Date'])
-#df['MM-DD'] = df['Date'].dt.strftime('%m-%d')
 df['DayOfYear'] = pd.to_datetime(df['Date']).dt.dayofyear
 df['Month'] = df['Date'].dt.month
 df['Day'] = df['Date'].dt.day
